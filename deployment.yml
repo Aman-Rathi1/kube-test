@@ -17,3 +17,10 @@ spec:
         image: registry:2
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - name: images
+          mountPath: /var/lib/registry/docker/registry/v2/repositories
+      volumes:
+      - name: images
+        persistentVolumeClaim:
+          claimName: registry-pvc
