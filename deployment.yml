@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: registry-dep
 spec:
-  replicas: 5
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx
+      app: registry
   template:
     metadata:
       labels:
-        app: nginx
+        app: registry
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: registry
+        image: registry:2
         ports:
-        - containerPort: 80
+        - containerPort: 5000
