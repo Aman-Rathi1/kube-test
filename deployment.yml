@@ -19,7 +19,7 @@ spec:
         - containerPort: 5000
         volumeMounts:
         - name: images
-          mountPath: /var/lib/registry/docker/registry/v2/repositories
+          mountPath: /var/lib/registry
       volumes:
       - name: images
         persistentVolumeClaim:
