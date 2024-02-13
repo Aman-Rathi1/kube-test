@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: registry-dep
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: registry
@@ -20,6 +20,9 @@ spec:
         volumeMounts:
         - name: images
           mountPath: /var/lib/registry
+        env:
+        - name: REGISTRY_HTTP_SECRET
+          value: "hsdbfasgdfuihaeiry7w4y93wfjdsbf"
       volumes:
       - name: images
         persistentVolumeClaim:
