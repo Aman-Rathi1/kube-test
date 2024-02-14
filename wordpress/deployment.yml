@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress-container
+        image: registry.io/wordpress:1.2
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: wordpress-content
+          mountPath: /var/www/html/wordpress/wp-content
+      volumes:
+      - name: wordpress-content
+        persistentVolumeClaim:
+         claimName: wordpress-content-pvc
