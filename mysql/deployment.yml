@@ -16,7 +16,7 @@ spec:
       - name: wordpress-container
         image: mysql:8.0
         envFrom:
-        - ConfigMapRef:
+        - configMapRef:
             name: mysql-config
         - secretRef:
             name: mysql-secret
