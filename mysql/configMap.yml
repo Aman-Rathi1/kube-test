@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   MYSQL_DATABASE: wordpress
+  MYSQL_HOST: mysql
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: mysql-config
