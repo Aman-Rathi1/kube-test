@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: wordpress-deployment
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: wordpress
@@ -15,6 +14,13 @@ spec:
       containers:
       - name: wordpress-container
         image: registry.io/wordpress:1.2
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "10Mi"
+          limits:
+            cpu: "200m"
+            memory: "50Mi"
         env:
         - name: WORDPRESS_DB_NAME
           valueFrom:
@@ -35,7 +41,8 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: mysql-config
-              key: MYSQL_HOST     
+              key: MYSQL_HOST
+           
         ports:
         - containerPort: 80
         volumeMounts:
